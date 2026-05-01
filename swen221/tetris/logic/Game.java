@@ -55,9 +55,9 @@ public class Game {
   }
    
   /**see {@link Game.moveDown()}*/
-  public void moveLeft() {//TODO: fix here
-    active.moveRight();
-    if (!activeValid()) { active.moveLeft(); }
+  public void moveLeft() {
+    active.moveLeft();
+    if (!activeValid()) { active.moveRight(); }
   }
   /**see {@link Game.moveDown()}*/
   public void moveRight() {
@@ -80,7 +80,13 @@ public class Game {
    * That is, it stops calling moveDown over and over again
    * when the position of the active tetromino stops changing
    * */
-  public void landing() {}//TODO: complete this code
+  public void landing() {
+    int prevY;
+    do {
+      prevY = active.centerY();
+      moveDown();
+    } while (active.centerY() != prevY);
+  }
 
   /**@return a new Tetromino chosen at random*/
   public Tetromino nextTetromino() {
