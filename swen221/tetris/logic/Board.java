@@ -92,7 +92,6 @@ public class Board {
    * Is the row y fully filled?
    * @param y must be between 0-19
    * */  
-  @SuppressWarnings("unused")
   private boolean isRowFull(int y) {
      assert yOk(y) : "row " + y + "not in 0-19";
      return rangeX().allMatch(x -> inner.get(y).get(x) != Color.EMPTY);
