@@ -4,8 +4,12 @@ import swen221.tetris.logic.Color;
 
 public class Z extends S{
   public Z(int x, int y, Color color) {
-    super(0, 0, null);/*TODO: complete this code*/
-    throw new Error();
+    super(x, y, color);
   }
-  //TODO: add more methods if needed
+
+  @Override
+  public int yOffset(int i) {
+    if (i < 2) { return 1; }
+    return 0;
+  }
 }

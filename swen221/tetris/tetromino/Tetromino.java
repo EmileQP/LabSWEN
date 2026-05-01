@@ -85,7 +85,7 @@ public abstract class Tetromino {
 
   /**Modify the state of the Tetromino so that it is now rotated 90' counter-clockwise */
   public final void rotateLeft() {
-    moveDown();//TODO: fix this code
+    rotateRight(); rotateRight(); rotateRight();
   }
 
   /**true if the tetromino is inside any element
@@ -96,14 +96,15 @@ public abstract class Tetromino {
   public boolean overlap(Board b) {
     //note, here we leverage on b.read returning Optional.empty()
     //when x,y are out of the board
-    return false;//TODO: complete here
+    return Board.rangeT().anyMatch(i->
+      b.read(x(i), y(i)).map(c-> c != swen221.tetris.logic.Color.EMPTY).orElse(true));
   }
 
   /**
    * modifies the content of the board by adding the cells of this Tetromino
    */
-  public void copyOnBoard(Board b) {//TODO: fix this code
+  public void copyOnBoard(Board b) {
     Board.rangeT()
-      .forEach(i-> b.write(0, y(i), color()));     
+      .forEach(i-> b.write(x(i), y(i), color()));     
   }
 }

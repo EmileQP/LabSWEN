@@ -3,25 +3,29 @@ package swen221.tetris.tetromino;
 import swen221.tetris.logic.Color;
 
 public class J extends Tetromino{
+  int[] dx;
+  int[] dy;
+
   public J(int x, int y, Color color) {
-    super(0, 0, null);/*TODO: complete this code*/
-    throw new Error();
+    super(x, y, color);
+    dx = initialDx();
+    dy = initialDy();
   }
 
-  @Override
-  public int x(int i) {/*TODO: complete this code*/
-    throw new Error();
-  }
+  protected int[] initialDx() { return new int[]{-1, 0, 1, 1}; }
+  protected int[] initialDy() { return new int[]{0, 0, 0, -1}; }
 
   @Override
-  public int y(int i) {/*TODO: complete this code*/
-    throw new Error();
-  }
+  public int x(int i) { return centerX() + dx[i]; }
 
   @Override
-  public void rotateRight() {/*TODO: complete this code*/
-    throw new Error();
+  public int y(int i) { return centerY() + dy[i]; }
+
+  @Override
+  public void rotateRight() {
+    int[] ndx = new int[]{dy[0], dy[1], dy[2], dy[3]};
+    int[] ndy = new int[]{-dx[0], -dx[1], -dx[2], -dx[3]};
+    dx = ndx;
+    dy = ndy;
   }
-  
-  //TODO: add more methods if needed
 }

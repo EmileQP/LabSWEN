@@ -4,9 +4,9 @@ import swen221.tetris.logic.Color;
 
 public class L extends J{
   public L(int x, int y, Color color) {
-    super(0, 0, null);/*TODO: complete this code*/
-    throw new Error();
+    super(x, y, color);
   }
-  
-  //TODO: add more methods if needed
+
+  @Override
+  protected int[] initialDx() { return new int[]{-1, 0, 1, -1}; }
 }

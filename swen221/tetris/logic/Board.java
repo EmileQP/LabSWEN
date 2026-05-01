@@ -95,18 +95,18 @@ public class Board {
   @SuppressWarnings("unused")
   private boolean isRowFull(int y) {
      assert yOk(y) : "row " + y + "not in 0-19";
-     //TODO: completing this method may help you to complete clearFullRows!
-     throw new Error();
+     return rangeX().allMatch(x -> inner.get(y).get(x) != Color.EMPTY);
    }
    
   /**
    * Removes all the full rows. Full rows are identified using isRowFull.
    * */
   public void clearFullRows() {
-    //hint: use clearRow
-    //hint: the top row is the one with y=19
-    //      the bottom row is the one with y=0
-    //TODO: complete this code
+    int y = 0;
+    while (y < 20) {
+      if (isRowFull(y)) { clearRow(y); }
+      else { y++; }
+    }
   }
 
   public String toString() {
