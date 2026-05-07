@@ -56,8 +56,8 @@ public class Game {
    
   /**see {@link Game.moveDown()}*/
   public void moveLeft() {
-	  active.moveLeft();
-	    if (!activeValid()) { active.moveRight(); }
+    active.moveLeft();
+    if (!activeValid()) { active.moveRight(); }
   }
   /**see {@link Game.moveDown()}*/
   public void moveRight() {
@@ -81,13 +81,12 @@ public class Game {
    * when the position of the active tetromino stops changing
    * */
   public void landing() {
-	    int prevY;
-	    do {
-	        prevY = active.centerY();
-	        moveDown();
-	    } while (active.centerY() != prevY);
-	    commitMove();
-	}
+    int prevY;
+    do {
+      prevY = active.centerY();
+      moveDown();
+    } while (active.centerY() != prevY);
+  }
 
   /**@return a new Tetromino chosen at random*/
   public Tetromino nextTetromino() {
@@ -121,12 +120,10 @@ public class Game {
    *   the board is restated.
    * */
   public void commitMove() {
-	    if (!active.touch(b)) { return; }
-	    active.copyOnBoard(b);
-	    b.clearFullRows();
-	    active = nextTetromino();
-	    if (active.overlap(b)) { b = new Board(); }
-	}
-  
-  
+    if (!active.touch(b)) { return; }
+    active.copyOnBoard(b);
+    b.clearFullRows();
+    active = nextTetromino();
+    if (active.overlap(b)) { b = new Board(); }
+  }
 }
